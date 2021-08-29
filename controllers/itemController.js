@@ -1,11 +1,28 @@
+var Item = require('../models/item');
+
 //Display list of all Items
 exports.item_list = function (req, res) {
     res.send('Item list:');
 };
 
 //Display description for specific Item
-exports.item_detail = function (req, res) {
-    res.send('Item details:');
+exports.item_detail = function (req, res, next) {
+    var itemId = req.params.id;
+
+    Item.findById(itemId)
+        .exec(function (err, item) {
+            if (err) {
+                return next(err);
+            }
+
+            if (item === null) {
+                var err = new Error('Item not found');
+                err.status = 404;
+                return next(err);
+            }
+
+            res.render('item_detail', { title: item.name, item });
+        });
 };
 
 //Create Item

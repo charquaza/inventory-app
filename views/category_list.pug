@@ -1,0 +1,14 @@
+extends layout 
+
+block content 
+    h1= title 
+
+    if category_list.length
+        ul 
+            each category in category_list 
+                li 
+                    a(href=category.url) #{category.name}
+    else 
+        p There are no categories to display.
+    
+    a(href='/catalog/category/create') Add Category
