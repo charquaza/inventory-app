@@ -1,0 +1,23 @@
+extends layout 
+
+block content 
+    h1= title
+    p Name: #{category.name} 
+    p Description: #{category.description}
+
+    if item_list.length 
+        p Please delete the following items before deleting this category:
+
+        ul 
+            each item in item_list 
+                li 
+                    a(href=item.url)= item.name
+
+    else
+        p Are you sure you want to delete this category?
+
+        form(method='POST' action='')
+            input(type='hidden' name='categoryid' required value=category._id)
+
+            button(type='submit') Delete 
+            a(href=category.url) Cancel

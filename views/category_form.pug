@@ -1,0 +1,19 @@
+extends layout 
+
+block content 
+    h1= title 
+
+    form(method='POST' action='')
+        label(for='name') Name: 
+        input#name(type='text' name='name'  value=(category !== undefined ? category.name : '') )
+
+        label(for='description') Description: 
+        input#description(type='textarea' name='description'  value=(category !== undefined ? category.description : '') )
+    
+        button(type='submit') Submit
+        a(href='/catalog') Cancel
+    
+    if errors
+        ul
+            each error in errors 
+                li!= error.msg
