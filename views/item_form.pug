@@ -1,0 +1,30 @@
+extends layout 
+
+block content 
+    h1= title 
+    p Category: #{category.name}
+
+    form(method='POST' action='')
+        label(for='name') Name: 
+        input#name(type='text' name='name' required maxlength='100' value=(item ? item.name : '') )
+
+        label(for='description') Description: 
+        input#description(type='textarea' name='description' required value=(item ? item.description : '') )
+
+        label(for='price') Price: 
+        input#price(type='number' name='price' required min='0' max='1000000' value=(item ? item.price : '') )
+
+        label(for='number_in_stock') Number in Stock: 
+        input#number_in_stock(type='number' name='number_in_stock' required min='0' max='99' value=(item ? item.number_in_stock : '') )
+
+        //- hidden input with categoryId info to submit to server
+        input#category(type='hidden' name='category' required readonly value=category._id)
+
+        button(type='submit') Submit 
+        a(href=(item ? item.url : category.url)) Cancel
+
+    if errors
+        ul  
+            each error in errors 
+                li!= error.msg
+

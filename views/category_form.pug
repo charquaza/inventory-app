@@ -5,10 +5,10 @@ block content
 
     form(method='POST' action='')
         label(for='name') Name: 
-        input#name(type='text' name='name'  value=(category !== undefined ? category.name : '') )
+        input#name(type='text' name='name' required maxlength='100' value=(category !== undefined ? category.name : '') )
 
         label(for='description') Description: 
-        input#description(type='textarea' name='description'  value=(category !== undefined ? category.description : '') )
+        input#description(type='textarea' name='description' required value=(category !== undefined ? category.description : '') )
     
         button(type='submit') Submit
         a(href='/catalog') Cancel

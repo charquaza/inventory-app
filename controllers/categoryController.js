@@ -50,7 +50,7 @@ exports.category_create_get = function (req, res, next) {
 exports.category_create_post = [
     //validate and sanitize fields
     body('name').trim().isLength({ min: 1 }).withMessage('Name must not be empty')
-        .isLength({ max: 100 }).withMessage('Name cannot be more than 100 characters')
+        .isLength({ max: 100 }).withMessage('Name must not be more than 100 characters')
         .escape(),
     body('description').trim().isLength({ min: 1 }).withMessage('Description must not be empty')
         .escape(),
@@ -101,7 +101,7 @@ exports.category_update_get = function (req, res, next) {
 exports.category_update_post = [
     //validate and sanitize fields
     body('name').trim().isLength({ min: 1 }).withMessage('Name must not be empty')
-        .isLength({ max: 100 }).withMessage('Name cannot be more than 100 characters')
+        .isLength({ max: 100 }).withMessage('Name must not be more than 100 characters')
         .escape(),
     body('description').trim().isLength({ min: 1 }).withMessage('Description must not be empty')
         .escape(),
