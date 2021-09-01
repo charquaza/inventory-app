@@ -17,9 +17,7 @@ block content
     else 
         p There are no items in this category.
     
-    form(method='GET' action='/catalog/item/create')
-        //- item create form needs the associated category info
-        input(type='hidden' name='categoryid' required value=category._id)
-        button(type='submit') Add Item
+    //- item create form needs the associated category info
+    a(href='/catalog/item/create?categoryid='+category._id) Add Item
 
     
